@@ -4,14 +4,16 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class SearchButton : MonoBehaviour {
 
-	// Use this for initialization
+    private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
+    private CollectionOfMovieClasses.Movie movie;
+
 	void Start () {
-		
+	    
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}
@@ -23,18 +25,20 @@ public class SearchButton : MonoBehaviour {
 
     public IEnumerator GetText()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://www.omdbapi.com/?apikey=81876aef&s=Matrix"))
+        using (UnityWebRequest MovieInfoRequest = UnityWebRequest.Get("http://www.omdbapi.com/?apikey=81876aef&s=Matrix"))
         {
-            yield return www.SendWebRequest();
+            yield return MovieInfoRequest.SendWebRequest();
 
-            if (www.isNetworkError || www.isHttpError)
+            if (MovieInfoRequest.isNetworkError || MovieInfoRequest.isHttpError)
             {
-                Debug.Log(www.error);
+                Debug.Log(MovieInfoRequest.error);
             }
             else
             {
-                // Show results as text
-                Debug.Log(www.downloadHandler.text);
+                resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
+                Debug.Log(resultsOfSearch.Search[0].Year);
+               // movie = JsonUtility.FromJson<CollectionOfMovieClasses.Movie>(MovieInfoRequest.downloadHandler.text);
+               // Debug.Log(movie.Type);
             }
         }
     }

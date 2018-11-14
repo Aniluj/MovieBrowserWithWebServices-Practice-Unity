@@ -9,6 +9,11 @@ public class SearchButton : MonoBehaviour {
 
     private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
     private CollectionOfMovieClasses.Movie movie;
+    private string actualTextOfMovieToSearch;
+    public Dropdown movieType;
+    public InputField movieSearchBox;
+    public InputField movieYearBox;
+    public GameObject[] singleResultPanels;
 
 	void Start () {
 	    
@@ -20,12 +25,13 @@ public class SearchButton : MonoBehaviour {
 
     public void Search()
     {
-        StartCoroutine(GetText());
+        actualTextOfMovieToSearch = "http://www.omdbapi.com/?apikey=81876aef&s="+movieSearchBox.text+"&y="+movieYearBox.text+"&type="+movieType.captionText.text;
+        StartCoroutine(GetMovies());
     }
 
-    public IEnumerator GetText()
+    public IEnumerator GetMovies()
     {
-        using (UnityWebRequest MovieInfoRequest = UnityWebRequest.Get("http://www.omdbapi.com/?apikey=81876aef&s=Matrix"))
+        using (UnityWebRequest MovieInfoRequest = UnityWebRequest.Get(actualTextOfMovieToSearch))
         {
             yield return MovieInfoRequest.SendWebRequest();
 
@@ -36,9 +42,23 @@ public class SearchButton : MonoBehaviour {
             else
             {
                 resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
-                Debug.Log(resultsOfSearch.Search[0].Year);
-               // movie = JsonUtility.FromJson<CollectionOfMovieClasses.Movie>(MovieInfoRequest.downloadHandler.text);
-               // Debug.Log(movie.Type);
+                if(resultsOfSearch.Search[0] != null)
+                {
+                    Debug.Log(resultsOfSearch.Search[0].imdbID);
+                    for(int i = 0; i < singleResultPanels.Length; i++)
+                    {
+                        Debug.Log("pelaca");
+                        Button titleButton = singleResultPanels[i].transform.Find("Title Button").GetComponent<Button>();
+                        Debug.Log(titleButton.name);
+                        Text[] yearAndType = singleResultPanels[i].GetComponents<Text>();
+                    }
+                }
+                else
+                {
+                    Debug.Log("No se han encontrado resultados para la busqueda solicitada");
+                }
+                //movie = JsonUtility.FromJson<CollectionOfMovieClasses.Movie>(MovieInfoRequest.downloadHandler.text);
+                //Debug.Log(movie.Type);
             }
         }
     }

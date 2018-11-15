@@ -44,13 +44,29 @@ public class SearchButton : MonoBehaviour {
                 resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
                 if(resultsOfSearch.Search[0] != null)
                 {
-                    Debug.Log(resultsOfSearch.Search[0].imdbID);
-                    for(int i = 0; i < singleResultPanels.Length; i++)
+                    for(int i=0; i < resultsOfSearch.Search.Count;i++)
                     {
-                        Debug.Log("pelaca");
-                        Button titleButton = singleResultPanels[i].transform.Find("Title Button").GetComponent<Button>();
-                        Debug.Log(titleButton.name);
-                        Text[] yearAndType = singleResultPanels[i].GetComponents<Text>();
+                        for (int j = 0; j < singleResultPanels.Length; j++)
+                        {
+                            Text[] textsOfSingleResultPanel = singleResultPanels[j].GetComponentsInChildren<Text>();
+                            Debug.Log(singleResultPanels[j].name);
+
+                            for (int k = 0; k < textsOfSingleResultPanel.Length; k++)
+                            {
+                                if (textsOfSingleResultPanel[k].tag == "MovieTitleText")
+                                {
+                                    textsOfSingleResultPanel[k].text = resultsOfSearch.Search[i].Title;
+                                }
+                                else if (textsOfSingleResultPanel[k].tag == "MovieYearText")
+                                {
+                                    textsOfSingleResultPanel[k].text = resultsOfSearch.Search[i].Year;
+                                }
+                                else if (textsOfSingleResultPanel[k].tag == "MovieTypeText")
+                                {
+                                    textsOfSingleResultPanel[k].text = resultsOfSearch.Search[i].Type;
+                                }
+                            }
+                        }
                     }
                 }
                 else

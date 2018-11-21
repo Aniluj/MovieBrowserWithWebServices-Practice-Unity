@@ -40,34 +40,12 @@ public class SearchButton : MonoBehaviour {
                 Debug.Log(MovieInfoRequest.error);
             }
             else
-            {
+            { 
                 resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
-                if(resultsOfSearch.Search[0] != null)
+                SetTextsOfMovieBoxes(true);
+                if (resultsOfSearch.Search.Count != 0)
                 {
-                    for(int i=0; i < resultsOfSearch.Search.Count;i++)
-                    {
-                        for (int j = 0; j < singleResultPanels.Length; j++)
-                        {
-                            Text[] textsOfSingleResultPanel = singleResultPanels[j].GetComponentsInChildren<Text>();
-                            Debug.Log(singleResultPanels[j].name);
-
-                            for (int k = 0; k < textsOfSingleResultPanel.Length; k++)
-                            {
-                                if (textsOfSingleResultPanel[k].tag == "MovieTitleText")
-                                {
-                                    textsOfSingleResultPanel[k].text = resultsOfSearch.Search[i].Title;
-                                }
-                                else if (textsOfSingleResultPanel[k].tag == "MovieYearText")
-                                {
-                                    textsOfSingleResultPanel[k].text = resultsOfSearch.Search[i].Year;
-                                }
-                                else if (textsOfSingleResultPanel[k].tag == "MovieTypeText")
-                                {
-                                    textsOfSingleResultPanel[k].text = resultsOfSearch.Search[i].Type;
-                                }
-                            }
-                        }
-                    }
+                    SetTextsOfMovieBoxes(false);
                 }
                 else
                 {
@@ -75,6 +53,56 @@ public class SearchButton : MonoBehaviour {
                 }
                 //movie = JsonUtility.FromJson<CollectionOfMovieClasses.Movie>(MovieInfoRequest.downloadHandler.text);
                 //Debug.Log(movie.Type);
+            }
+        }
+    }
+
+    private void SetTextsOfMovieBoxes(bool reset)
+    {
+        if(reset)
+        {
+            for(int i=0; i<singleResultPanels.Length;i++)
+            {
+                Text[] textsOfSingleResultPanel = singleResultPanels[i].GetComponentsInChildren<Text>();
+
+                for(int j=0;j<textsOfSingleResultPanel.Length;j++)
+                {
+                    if (textsOfSingleResultPanel[j].tag == "MovieTitleText")
+                    {
+                        textsOfSingleResultPanel[j].text = "";
+                    }
+                    else if (textsOfSingleResultPanel[j].tag == "MovieYearText")
+                    {
+                        textsOfSingleResultPanel[j].text = "";
+                    }
+                    else if (textsOfSingleResultPanel[j].tag == "MovieTypeText")
+                    {
+                        textsOfSingleResultPanel[j].text = "";
+                    }
+                }
+            }
+        }
+        else
+        {
+            for(int i=0;i< resultsOfSearch.Search.Count;i++)
+            {
+                Text[] textsOfSingleResultPanel = singleResultPanels[i].GetComponentsInChildren<Text>();
+
+                for (int j = 0; j < textsOfSingleResultPanel.Length; j++)
+                {
+                    if (textsOfSingleResultPanel[j].tag == "MovieTitleText")
+                    {
+                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Title;
+                    }
+                    else if (textsOfSingleResultPanel[j].tag == "MovieYearText")
+                    {
+                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Year;
+                    }
+                    else if (textsOfSingleResultPanel[j].tag == "MovieTypeText")
+                    {
+                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Type;
+                    }
+                }
             }
         }
     }

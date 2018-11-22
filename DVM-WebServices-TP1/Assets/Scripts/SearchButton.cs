@@ -10,11 +10,13 @@ public class SearchButton : MonoBehaviour {
     private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
     private CollectionOfMovieClasses.Movie movie;
     private string actualTextOfMovieToSearch;
+    public int currentPage;
+    public int totalPages;
     public Dropdown movieType;
     public InputField movieSearchBox;
     public InputField movieYearBox;
     public GameObject[] singleResultPanels;
-
+ 
 	void Start () {
 	    
 	}
@@ -42,6 +44,12 @@ public class SearchButton : MonoBehaviour {
             else
             { 
                 resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
+                totalPages = int.Parse(resultsOfSearch.totalResults)/10;
+                if (int.Parse(resultsOfSearch.totalResults) % 10 > 0)
+                {
+                    totalPages += 1;
+                }
+                Debug.Log(totalPages);
                 SetTextsOfMovieBoxes(true);
                 if (resultsOfSearch.Search.Count != 0)
                 {
@@ -87,7 +95,7 @@ public class SearchButton : MonoBehaviour {
             for(int i=0;i< resultsOfSearch.Search.Count;i++)
             {
                 Text[] textsOfSingleResultPanel = singleResultPanels[i].GetComponentsInChildren<Text>();
-
+                
                 for (int j = 0; j < textsOfSingleResultPanel.Length; j++)
                 {
                     if (textsOfSingleResultPanel[j].tag == "MovieTitleText")

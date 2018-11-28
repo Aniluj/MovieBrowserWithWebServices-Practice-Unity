@@ -7,17 +7,16 @@ using UnityEngine;
 
 public class SearchButton : MonoBehaviour {
 
-    private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
-    private CollectionOfMovieClasses.Movie movie;
-    private string actualTextOfMovieToSearch;
+    //private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
+    //private CollectionOfMovieClasses.Movie movie;
+    public string actualTextOfMovieToSearch;
+    public string actualTextOfMovieYearToSearch;
+    public string actualTextOfMovieTypeToSearch;
     public Blackboard blackboard;
-    public int currentPage;
-    public int totalPages;
     public Dropdown movieType;
     public InputField movieSearchBox;
     public InputField movieYearBox;
-    public GameObject[] singleResultPanels;
- 
+
 	void Start () {
 	    
 	}
@@ -28,7 +27,11 @@ public class SearchButton : MonoBehaviour {
 
     public void Search()
     {
-        blackboard.currentSearch = "http://www.omdbapi.com/?apikey=81876aef&s="+movieSearchBox.text+"&y="+movieYearBox.text+"&type="+movieType.captionText.text;
+        actualTextOfMovieToSearch = movieSearchBox.text;
+        actualTextOfMovieYearToSearch = movieYearBox.text;
+        actualTextOfMovieTypeToSearch = movieType.captionText.text;
+
+        blackboard.currentSearch = "http://www.omdbapi.com/?apikey=81876aef&s="+actualTextOfMovieToSearch+"&y="+actualTextOfMovieYearToSearch+"&type="+actualTextOfMovieTypeToSearch;
         StartCoroutine(GetMovies());
     }
 
@@ -43,13 +46,13 @@ public class SearchButton : MonoBehaviour {
                 Debug.Log(MovieInfoRequest.error);
             }
             else
-            { 
-                resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
+            {
+                blackboard.resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
                 SetTextsOfMovieBoxes(true);
-                if (resultsOfSearch.Search.Count != 0)
+                if (blackboard.resultsOfSearch.Search.Count != 0)
                 {
-                    blackboard.totalPages = int.Parse(resultsOfSearch.totalResults) / 10;
-                    if(int.Parse(resultsOfSearch.totalResults) % 10 > 0)
+                    blackboard.totalPages = int.Parse(blackboard.resultsOfSearch.totalResults) / 10;
+                    if(int.Parse(blackboard.resultsOfSearch.totalResults) % 10 > 0)
                     {
                         blackboard.totalPages += 1;
                     }
@@ -74,9 +77,9 @@ public class SearchButton : MonoBehaviour {
     {
         if(reset)
         {
-            for(int i=0; i<singleResultPanels.Length;i++)
+            for(int i=0; i< blackboard.singleResultPanels.Length;i++)
             {
-                Text[] textsOfSingleResultPanel = singleResultPanels[i].GetComponentsInChildren<Text>();
+                Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
 
                 blackboard.totalPages = 0;
                 blackboard.currentPage = 0;
@@ -100,23 +103,23 @@ public class SearchButton : MonoBehaviour {
         }
         else
         {
-            for(int i=0;i< resultsOfSearch.Search.Count;i++)
+            for(int i=0;i< blackboard.resultsOfSearch.Search.Count;i++)
             {
-                Text[] textsOfSingleResultPanel = singleResultPanels[i].GetComponentsInChildren<Text>();
+                Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
                 
                 for (int j = 0; j < textsOfSingleResultPanel.Length; j++)
                 {
                     if (textsOfSingleResultPanel[j].tag == "MovieTitleText")
                     {
-                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Title;
+                        textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Title;
                     }
                     else if (textsOfSingleResultPanel[j].tag == "MovieYearText")
                     {
-                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Year;
+                        textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Year;
                     }
                     else if (textsOfSingleResultPanel[j].tag == "MovieTypeText")
                     {
-                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Type;
+                        textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Type;
                     }
                 }
             }

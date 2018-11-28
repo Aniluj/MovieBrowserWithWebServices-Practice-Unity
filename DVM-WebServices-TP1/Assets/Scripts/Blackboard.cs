@@ -8,6 +8,8 @@ public class Blackboard : MonoBehaviour {
     public int totalPages = 0;
     public string currentSearch = "";
     public GameObject[] singleResultPanels;
+    public CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
+    public CollectionOfMovieClasses.Movie movie;
 
     void Start () {
 		

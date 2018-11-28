@@ -9,8 +9,8 @@ public class ChangeOfPageController : MonoBehaviour {
     public Text pageIndicator;
     public Blackboard blackboard;
     public SearchButton searchController;
-    private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
-    private CollectionOfMovieClasses.Movie movie;
+    //private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
+    //private CollectionOfMovieClasses.Movie movie;
 
     void Start ()
     {
@@ -24,23 +24,19 @@ public class ChangeOfPageController : MonoBehaviour {
 
     public void ChangePage(bool nextPage)
     {
-        if(nextPage)
+        if(nextPage && blackboard.currentPage < blackboard.totalPages)
         {
-            Debug.Log(blackboard.currentPage);
             blackboard.currentPage += 1;
-            blackboard.currentSearch = "http://www.omdbapi.com/?apikey=81876aef&s=" + searchController.movieSearchBox.text + "&y=" + searchController.movieYearBox.text + "&type=" + searchController.movieType.captionText.text + "&page=" + blackboard.currentPage;
+
+            blackboard.currentSearch = "http://www.omdbapi.com/?apikey=81876aef&s=" + searchController.actualTextOfMovieToSearch + "&y=" + searchController.movieYearBox.text + "&type=" + searchController.movieType.captionText.text + "&page=" + blackboard.currentPage;
             StartCoroutine(GetPageOfMovie());
         }
-        else if (!nextPage)
+        else if (!nextPage && blackboard.currentPage > 1)
         {
-            if(blackboard.currentPage != 1)
-            {
-                Debug.Log(blackboard.currentPage);
-                blackboard.currentPage = blackboard.currentPage - 1;
-                Debug.Log(blackboard.currentPage);
-                blackboard.currentSearch += "http://www.omdbapi.com/?apikey=81876aef&s=" + searchController.movieSearchBox.text + "&y=" + searchController.movieYearBox.text + "&type=" + searchController.movieType.captionText.text + "&page=" + blackboard.currentPage;
-                StartCoroutine(GetPageOfMovie());
-            }
+            blackboard.currentPage = blackboard.currentPage - 1;
+
+            blackboard.currentSearch = "http://www.omdbapi.com/?apikey=81876aef&s=" + searchController.actualTextOfMovieToSearch + "&y=" + searchController.actualTextOfMovieYearToSearch + "&type=" + searchController.actualTextOfMovieTypeToSearch + "&page=" + blackboard.currentPage;
+            StartCoroutine(GetPageOfMovie());
         }
     }
 
@@ -56,9 +52,9 @@ public class ChangeOfPageController : MonoBehaviour {
             }
             else
             {
-                resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
+                blackboard.resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
                 SetTextsOfMovieBoxes(true);
-                if(resultsOfSearch.Search.Count != 0)
+                if(blackboard.resultsOfSearch.Search.Count != 0)
                 {
                     SetTextsOfMovieBoxes(false);
                 }
@@ -74,9 +70,9 @@ public class ChangeOfPageController : MonoBehaviour {
     {
         if(reset)
         {
-            for(int i = 0; i < searchController.singleResultPanels.Length; i++)
+            for(int i = 0; i < blackboard.singleResultPanels.Length; i++)
             {
-                Text[] textsOfSingleResultPanel = searchController.singleResultPanels[i].GetComponentsInChildren<Text>();
+                Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
 
                 for(int j = 0; j < textsOfSingleResultPanel.Length; j++)
                 {
@@ -97,23 +93,23 @@ public class ChangeOfPageController : MonoBehaviour {
         }
         else
         {
-            for(int i = 0; i < resultsOfSearch.Search.Count; i++)
+            for(int i = 0; i < blackboard.resultsOfSearch.Search.Count; i++)
             {
-                Text[] textsOfSingleResultPanel = searchController.singleResultPanels[i].GetComponentsInChildren<Text>();
+                Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
 
                 for(int j = 0; j < textsOfSingleResultPanel.Length; j++)
                 {
                     if(textsOfSingleResultPanel[j].tag == "MovieTitleText")
                     {
-                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Title;
+                        textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Title;
                     }
                     else if(textsOfSingleResultPanel[j].tag == "MovieYearText")
                     {
-                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Year;
+                        textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Year;
                     }
                     else if(textsOfSingleResultPanel[j].tag == "MovieTypeText")
                     {
-                        textsOfSingleResultPanel[j].text = resultsOfSearch.Search[i].Type;
+                        textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Type;
                     }
                 }
             }

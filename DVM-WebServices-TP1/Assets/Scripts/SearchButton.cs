@@ -10,6 +10,7 @@ public class SearchButton : MonoBehaviour {
     private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
     private CollectionOfMovieClasses.Movie movie;
     private string actualTextOfMovieToSearch;
+    public Blackboard blackboard;
     public int currentPage;
     public int totalPages;
     public Dropdown movieType;
@@ -27,16 +28,16 @@ public class SearchButton : MonoBehaviour {
 
     public void Search()
     {
-        actualTextOfMovieToSearch = "http://www.omdbapi.com/?apikey=81876aef&s="+movieSearchBox.text+"&y="+movieYearBox.text+"&type="+movieType.captionText.text;
+        blackboard.currentSearch = "http://www.omdbapi.com/?apikey=81876aef&s="+movieSearchBox.text+"&y="+movieYearBox.text+"&type="+movieType.captionText.text;
         StartCoroutine(GetMovies());
     }
 
     public IEnumerator GetMovies()
     {
-        using (UnityWebRequest MovieInfoRequest = UnityWebRequest.Get(actualTextOfMovieToSearch))
+        using (UnityWebRequest MovieInfoRequest = UnityWebRequest.Get(blackboard.currentSearch))
         {
             yield return MovieInfoRequest.SendWebRequest();
-
+            
             if (MovieInfoRequest.isNetworkError || MovieInfoRequest.isHttpError)
             {
                 Debug.Log(MovieInfoRequest.error);
@@ -44,15 +45,19 @@ public class SearchButton : MonoBehaviour {
             else
             { 
                 resultsOfSearch = JsonUtility.FromJson<CollectionOfMovieClasses.MovieSearchResults>(MovieInfoRequest.downloadHandler.text);
-                totalPages = int.Parse(resultsOfSearch.totalResults)/10;
-                if (int.Parse(resultsOfSearch.totalResults) % 10 > 0)
-                {
-                    totalPages += 1;
-                }
-                Debug.Log(totalPages);
                 SetTextsOfMovieBoxes(true);
                 if (resultsOfSearch.Search.Count != 0)
                 {
+                    blackboard.totalPages = int.Parse(resultsOfSearch.totalResults) / 10;
+                    if(int.Parse(resultsOfSearch.totalResults) % 10 > 0)
+                    {
+                        blackboard.totalPages += 1;
+                    }
+
+                    blackboard.currentPage = 1;
+
+                    Debug.Log(blackboard.totalPages);
+
                     SetTextsOfMovieBoxes(false);
                 }
                 else
@@ -72,6 +77,9 @@ public class SearchButton : MonoBehaviour {
             for(int i=0; i<singleResultPanels.Length;i++)
             {
                 Text[] textsOfSingleResultPanel = singleResultPanels[i].GetComponentsInChildren<Text>();
+
+                blackboard.totalPages = 0;
+                blackboard.currentPage = 0;
 
                 for(int j=0;j<textsOfSingleResultPanel.Length;j++)
                 {

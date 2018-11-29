@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224095510099733056}
   - component: {fileID: 222421658663639484}
   - component: {fileID: 114544333002662186}
+  - component: {fileID: 114918424499375082}
   m_Layer: 5
   m_Name: Single Result Panel
   m_TagString: Untagged
@@ -162,7 +163,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114020676194407378}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114918424499375082}
+        m_MethodName: MakeIndividualSearch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114239710647341890
@@ -291,6 +303,49 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Year
+--- !u!114 &114918424499375082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1172277624291200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35cb0721ac46144a92daa7f49931564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  movie:
+    Title: 
+    Year: 
+    Rated: 
+    Released: 
+    Runtime: 
+    Genre: 
+    Director: 
+    Writer: 
+    Actors: 
+    Plot: 
+    Language: 
+    Country: 
+    Awards: 
+    Poster: 
+    Ratings: []
+    Metascore: 
+    imdbRating: 
+    imdbVotes: 
+    imdbID: 
+    Type: 
+    DVD: 
+    BoxOffice: 
+    Production: 
+    Website: 
+    Response: 
+  panelsToDeactivate:
+  - {fileID: 0}
+  - {fileID: 0}
+  panelsToActivate:
+  - {fileID: 0}
 --- !u!222 &222058068615527034
 CanvasRenderer:
   m_ObjectHideFlags: 1

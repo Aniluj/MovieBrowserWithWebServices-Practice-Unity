@@ -7,8 +7,7 @@ using UnityEngine;
 
 public class SearchButton : MonoBehaviour {
 
-    //private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
-    //private CollectionOfMovieClasses.Movie movie;
+    private IndividualSearch individualSearch;
     public string actualTextOfMovieToSearch;
     public string actualTextOfMovieYearToSearch;
     public string actualTextOfMovieTypeToSearch;
@@ -17,7 +16,10 @@ public class SearchButton : MonoBehaviour {
     public InputField movieSearchBox;
     public InputField movieYearBox;
 
-	void Start () {
+    public GameObject[] panelsToDeactivate;
+    public GameObject[] panelsToActivate;
+
+    void Start () {
 	    
 	}
 	
@@ -61,6 +63,8 @@ public class SearchButton : MonoBehaviour {
 
                     Debug.Log(blackboard.totalPages);
 
+                    DeactivateAndActivatePanels();
+
                     SetTextsOfMovieBoxes(false);
                 }
                 else
@@ -79,6 +83,9 @@ public class SearchButton : MonoBehaviour {
         {
             for(int i=0; i< blackboard.singleResultPanels.Length;i++)
             {
+                individualSearch = blackboard.singleResultPanels[i].GetComponent<IndividualSearch>();
+                individualSearch.id = "";
+
                 Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
 
                 blackboard.totalPages = 0;
@@ -105,6 +112,9 @@ public class SearchButton : MonoBehaviour {
         {
             for(int i=0;i< blackboard.resultsOfSearch.Search.Count;i++)
             {
+                individualSearch = blackboard.singleResultPanels[i].GetComponent<IndividualSearch>();
+                individualSearch.id = blackboard.resultsOfSearch.Search[i].imdbID;
+
                 Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
                 
                 for (int j = 0; j < textsOfSingleResultPanel.Length; j++)
@@ -122,6 +132,24 @@ public class SearchButton : MonoBehaviour {
                         textsOfSingleResultPanel[j].text = blackboard.resultsOfSearch.Search[i].Type;
                     }
                 }
+            }
+        }
+    }
+
+    public void DeactivateAndActivatePanels()
+    {
+        if (panelsToDeactivate != null)
+        {
+            for (int i = 0; i < panelsToDeactivate.Length; i++)
+            {
+                panelsToDeactivate[i].SetActive(false);
+            }
+        }
+        if (panelsToActivate != null)
+        {
+            for (int i = 0; i < panelsToActivate.Length; i++)
+            {
+                panelsToActivate[i].SetActive(true);
             }
         }
     }

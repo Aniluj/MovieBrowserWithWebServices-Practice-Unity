@@ -9,8 +9,6 @@ public class ChangeOfPageController : MonoBehaviour {
     public Text pageIndicator;
     public Blackboard blackboard;
     public SearchButton searchController;
-    //private CollectionOfMovieClasses.MovieSearchResults resultsOfSearch;
-    //private CollectionOfMovieClasses.Movie movie;
 
     void Start ()
     {

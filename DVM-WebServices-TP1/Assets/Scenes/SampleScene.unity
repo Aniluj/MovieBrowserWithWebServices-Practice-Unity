@@ -364,6 +364,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -440,11 +455,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1554664171}
     m_Modifications:
-    - target: {fileID: 114043725390387644, guid: 03966038990d6da4f965a0fb058fd109,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224095510099733056, guid: 03966038990d6da4f965a0fb058fd109,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -535,35 +545,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1921662872328260, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 114043725390387644, guid: 03966038990d6da4f965a0fb058fd109,
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114043725390387644, guid: 03966038990d6da4f965a0fb058fd109,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114043725390387644, guid: 03966038990d6da4f965a0fb058fd109,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: panelsToDeactivate.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114043725390387644, guid: 03966038990d6da4f965a0fb058fd109,
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Search
-      objectReference: {fileID: 0}
-    - target: {fileID: 114043725390387644, guid: 03966038990d6da4f965a0fb058fd109,
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -1151,6 +1147,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -1165,7 +1176,6 @@ GameObject:
   - component: {fileID: 524028018}
   - component: {fileID: 524028017}
   - component: {fileID: 524028016}
-  - component: {fileID: 524028015}
   m_Layer: 5
   m_Name: Search Button
   m_TagString: Untagged
@@ -1192,24 +1202,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &524028015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 524028013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8a047b1c6335794b82ae4742b4e50e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actualTextOfMovieToSearch: 
-  actualTextOfMovieYearToSearch: 
-  actualTextOfMovieTypeToSearch: 
-  blackboard: {fileID: 0}
-  movieType: {fileID: 0}
-  movieSearchBox: {fileID: 0}
-  movieYearBox: {fileID: 0}
 --- !u!114 &524028016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,6 +1243,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 613229671}
         m_MethodName: Search
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: DeactivateAndActivatePanels
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1392,6 +1395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556867898}
   - component: {fileID: 556867899}
+  - component: {fileID: 556867900}
   m_Layer: 5
   m_Name: Change of Page controller
   m_TagString: Untagged
@@ -1431,6 +1435,19 @@ MonoBehaviour:
   pageIndicator: {fileID: 2147377007}
   blackboard: {fileID: 1737782321}
   searchController: {fileID: 613229671}
+--- !u!114 &556867900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 556867897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e8bd00c6802094458284d05142b0667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panelsToActivate: []
+  panelsToDeactivate: []
 --- !u!1 &583027324 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1172277624291200, guid: 03966038990d6da4f965a0fb058fd109,
@@ -1542,6 +1559,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -1597,6 +1629,11 @@ MonoBehaviour:
   movieType: {fileID: 1064824720}
   movieSearchBox: {fileID: 736788695}
   movieYearBox: {fileID: 763783601}
+  panelsToDeactivate:
+  - {fileID: 1185508315}
+  panelsToActivate:
+  - {fileID: 293980238}
+  - {fileID: 1554664170}
 --- !u!1 &626573356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2440,6 +2477,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -3069,6 +3121,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -3519,6 +3586,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -3777,6 +3859,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -3950,6 +4047,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0
@@ -4297,6 +4409,21 @@ Prefab:
       propertyPath: m_Name
       value: Single Result Panel (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1554664170}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToDeactivate.Array.data[1]
+      value: 
+      objectReference: {fileID: 293980238}
+    - target: {fileID: 114918424499375082, guid: 03966038990d6da4f965a0fb058fd109,
+        type: 2}
+      propertyPath: panelsToActivate.Array.data[0]
+      value: 
+      objectReference: {fileID: 1185508315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03966038990d6da4f965a0fb058fd109, type: 2}
   m_IsPrefabAsset: 0

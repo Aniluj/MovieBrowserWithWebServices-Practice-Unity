@@ -70,6 +70,9 @@ public class ChangeOfPageController : MonoBehaviour {
         {
             for(int i = 0; i < blackboard.singleResultPanels.Length; i++)
             {
+                searchController.individualSearch = blackboard.singleResultPanels[i].GetComponent<IndividualSearch>();
+                searchController.individualSearch.id = "";
+
                 Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
 
                 for(int j = 0; j < textsOfSingleResultPanel.Length; j++)
@@ -93,6 +96,9 @@ public class ChangeOfPageController : MonoBehaviour {
         {
             for(int i = 0; i < blackboard.resultsOfSearch.Search.Count; i++)
             {
+                searchController.individualSearch = blackboard.singleResultPanels[i].GetComponent<IndividualSearch>();
+                searchController.individualSearch.id = blackboard.resultsOfSearch.Search[i].imdbID;
+
                 Text[] textsOfSingleResultPanel = blackboard.singleResultPanels[i].GetComponentsInChildren<Text>();
 
                 for(int j = 0; j < textsOfSingleResultPanel.Length; j++)

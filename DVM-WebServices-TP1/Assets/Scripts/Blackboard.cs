@@ -18,9 +18,4 @@ public class Blackboard : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    public void resetData()
-    {
-       
-    }
 }

@@ -5,13 +5,15 @@ using UnityEngine;
 public class CollectionOfMovieClasses : MonoBehaviour {
 
     [System.Serializable]
-    public class Rating {
+    public class Rating 
+    {
         public string Source;
         public string Value;
     }
 
     [System.Serializable]
-    public class Movie {
+    public class Movie
+    {
         public string Title;
         public string Year;
         public string Rated;
@@ -32,6 +34,7 @@ public class CollectionOfMovieClasses : MonoBehaviour {
         public string imdbVotes;
         public string imdbID;
         public string Type;
+        public string totalSeasons;
         public string DVD;
         public string BoxOffice;
         public string Production;
@@ -40,7 +43,8 @@ public class CollectionOfMovieClasses : MonoBehaviour {
     }
 
     [System.Serializable]
-    public class MovieSearchResults {
+    public class MovieSearchResults
+    {
         public List<Movie> Search;
         public string totalResults;
         public string Response;

@@ -7,7 +7,7 @@ using UnityEngine;
 public class IndividualSearch : MonoBehaviour {
 
     public string id;
-    public CollectionOfMovieClasses.Movie movie;
+    public SpecificDataController dataController;
     public GameObject[] panelsToDeactivate;
     public GameObject[] panelsToActivate;
     private string currentIndividualSearch;
@@ -38,24 +38,11 @@ public class IndividualSearch : MonoBehaviour {
             }
             else
             {
-                movie = JsonUtility.FromJson<CollectionOfMovieClasses.Movie>(MovieInfoRequest.downloadHandler.text);
+                dataController.movie = JsonUtility.FromJson<CollectionOfMovieClasses.Movie>(MovieInfoRequest.downloadHandler.text);
 
-                if(movie.imdbID != null)
+                if(dataController.movie.imdbID != null)
                 {
-                    if (panelsToActivate != null)
-                    {
-                        for (int i = 0; i < panelsToActivate.Length; i++)
-                        {
-                            panelsToActivate[i].SetActive(true);
-                        }
-                    }
-                    if (panelsToDeactivate != null)
-                    {
-                        for (int i = 0; i < panelsToDeactivate.Length; i++)
-                        {
-                            panelsToDeactivate[i].SetActive(false);
-                        }
-                    }
+                    ActivateAndDeactivatePanels();
                 }
             }
         }
@@ -69,6 +56,8 @@ public class IndividualSearch : MonoBehaviour {
             {
                 panelsToActivate[i].SetActive(true);
             }
+            dataController.ResetData();
+            dataController.SetSpecificData();
         }
         if (panelsToDeactivate != null)
         {

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class SearchButton : MonoBehaviour {
 
-    private IndividualSearch individualSearch;
+    public IndividualSearch individualSearch;
     public string actualTextOfMovieToSearch;
     public string actualTextOfMovieYearToSearch;
     public string actualTextOfMovieTypeToSearch;
@@ -15,7 +15,6 @@ public class SearchButton : MonoBehaviour {
     public Dropdown movieType;
     public InputField movieSearchBox;
     public InputField movieYearBox;
-
     public GameObject[] panelsToDeactivate;
     public GameObject[] panelsToActivate;
 
@@ -81,6 +80,7 @@ public class SearchButton : MonoBehaviour {
     {
         if(reset)
         {
+            
             for(int i=0; i< blackboard.singleResultPanels.Length;i++)
             {
                 individualSearch = blackboard.singleResultPanels[i].GetComponent<IndividualSearch>();

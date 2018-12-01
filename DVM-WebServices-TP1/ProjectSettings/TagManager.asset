@@ -10,6 +10,7 @@ TagManager:
   - PlotText
   - RatingText
   - ExpandOrShrinkText
+  - PosterInfoText
   layers:
   - Default
   - TransparentFX

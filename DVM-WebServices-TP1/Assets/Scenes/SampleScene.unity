@@ -918,8 +918,8 @@ GameObject:
   - component: {fileID: 208390355}
   - component: {fileID: 208390354}
   m_Layer: 5
-  m_Name: Content of the List
-  m_TagString: Untagged
+  m_Name: Content of the Poster Info
+  m_TagString: PosterInfoText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -940,7 +940,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0.0000035427513}
-  m_SizeDelta: {x: 0, y: 1194}
+  m_SizeDelta: {x: 0, y: 44}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &208390354
 MonoBehaviour:
@@ -998,18 +998,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 4
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 4
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  m_Text: 
 --- !u!222 &208390357
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1728,7 +1728,7 @@ RectTransform:
   m_Father: {fileID: 596625422}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.8270955}
+  m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -2938,7 +2938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8018868, g: 0.23073156, b: 0.23073156, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3524,10 +3524,51 @@ MonoBehaviour:
     Production: 
     Website: 
     Response: 
+  imageData:
+    FileType: 
+    FileTypeExtension: 
+    MIMEType: 
+    JFIFVersion: 0
+    ResolutionUnit: 
+    XResolution: 0
+    YResolution: 0
+    ProfileCMMType: 
+    ProfileVersion: 
+    ProfileClass: 
+    ColorSpaceData: 
+    ProfileConnectionSpace: 
+    ProfileDateTime: 
+    ProfileFileSignature: 
+    PrimaryPlatform: 
+    CMMFlags: 
+    DeviceManufacturer: 
+    DeviceModel: 
+    DeviceAttributes: 
+    RenderingIntent: 
+    ConnectionSpaceIlluminant: 
+    ProfileCreator: 
+    ProfileID: 0
+    ProfileDescription: 
+    ProfileCopyright: 
+    MediaWhitePoint: 
+    MediaBlackPoint: 
+    RedMatrixColumn: 
+    GreenMatrixColumn: 
+    BlueMatrixColumn: 
+    ImageWidth: 0
+    ImageHeight: 0
+    EncodingProcess: 
+    BitsPerSample: 0
+    ColorComponents: 0
+    YCbCrSubSampling: 
+    ImageSize: 
+    Megapixels: 0
   specificDataText: {fileID: 22940791}
   plotPanel: {fileID: 57996654}
   ratingPanel: {fileID: 1559624026}
   posterPanel: {fileID: 1722024269}
+  goToMovieWebsiteButton: {fileID: 984884392}
+  poster: {fileID: 715572889}
 --- !u!1 &841699915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,7 +3935,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984884395}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 826338401}
+        m_MethodName: GoToMovieWebsite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &984884395
@@ -6964,7 +7016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1950036258
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7022,7 +7074,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1950036260}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 826338401}
+        m_MethodName: GoToIMDBWebsite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1950036260
@@ -7620,8 +7683,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 463751418}
   m_HandleRect: {fileID: 463751417}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.17290452
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
